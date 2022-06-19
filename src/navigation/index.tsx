@@ -10,6 +10,7 @@ import {HomeScreen} from '../screens/HomeScreen';
 
 import {TimerScreen} from '../screens/TimerScreen';
 import {useBackHandler} from '@react-native-community/hooks';
+import {RootStackParamList} from './types';
 
 export default function Navigation() {
   useBackHandler(() => {
@@ -28,7 +29,7 @@ export default function Navigation() {
   * A root stack navigator is often used for displaying modals on top of all other content.
   * https://reactnavigation.org/docs/modal
   */
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   return (

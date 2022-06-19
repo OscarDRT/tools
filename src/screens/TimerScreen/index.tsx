@@ -3,13 +3,13 @@ import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, Vibration} from 'react-native';
 
 import {Text, View} from 'react-native';
-import {RootStackScreenProps} from '../../../types';
 import {MinuteButton} from '../../components/MinuteButton';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {Countdown} from '../../components/Countdown';
 
 import {useKeepAwake} from '@sayem314/react-native-keep-awake';
 import {ProgressBar} from 'react-native-paper';
+import {RootStackScreenProps} from '../../navigation/types';
 
 const ONE_SECOND_IN_MS = 1000;
 
