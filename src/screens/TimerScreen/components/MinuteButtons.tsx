@@ -14,7 +14,7 @@ export const MinuteButtons = ({setMinutes, disabled}: MinuteButtonsProps) => {
       flexWrap={'wrap'}
       justifyContent={'space-evenly'}
       paddingHorizontal={'$16'}>
-      {[1, 15, 30, 45, 50].map((item, idx) => {
+      {[10, 15, 30, 45, 50].map((item, idx) => {
         return (
           <Box margin={'$8'} key={idx}>
             <MinuteButton

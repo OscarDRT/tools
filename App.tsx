@@ -1,22 +1,23 @@
-import React from 'react';
-import {StatusBar} from 'react-native';
+import React, {useState} from 'react';
+import {StatusBar, Switch} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {SwitchTheme} from './src/components/SwitchTheme';
 import Navigation from './src/navigation';
 import {ThemeProvider} from './src/theme';
 
 export default function App() {
-  //const isLoadingComplete = useCachedResources();
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
 
-  if (false) {
-    return null;
-  } else {
-    return (
-      <ThemeProvider>
-        <SafeAreaView style={{flex: 1}}>
-          <StatusBar hidden />
-          <Navigation />
-        </SafeAreaView>
-      </ThemeProvider>
-    );
-  }
+  return (
+    <ThemeProvider isDarkTheme={isDarkTheme}>
+      <SafeAreaView style={{flex: 1}}>
+        <StatusBar hidden />
+        <SwitchTheme
+          isDarkTheme={isDarkTheme}
+          setIsDarkTheme={setIsDarkTheme}
+        />
+        <Navigation />
+      </SafeAreaView>
+    </ThemeProvider>
+  );
 }
