@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {StyleSheet, Dimensions, View, Text} from 'react-native';
-import {RFValue} from 'react-native-responsive-fontsize';
+import {Dimensions} from 'react-native';
+import {Box} from './Box';
+import {Text} from './Text';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -28,19 +29,6 @@ export const Countdown = ({
 
   const seconds = Math.floor((millis as number) / 1000) % 60;
 
-  const countDown = () => {
-    setMillis(time => {
-      if (time === 0) {
-        clearInterval(interval.current as NodeJS.Timeout);
-        onEnd();
-        console.log('TERMINE');
-        return time;
-      }
-      const timeLeft = (time as number) - 1000;
-      return timeLeft;
-    });
-  };
-
   useEffect(() => {
     if (millis) {
       onProgress(millis / minutesToMillis(minutes));
@@ -52,6 +40,19 @@ export const Countdown = ({
   }, [minutes]);
 
   useEffect(() => {
+    const countDown = () => {
+      setMillis(time => {
+        if (time === 0) {
+          clearInterval(interval.current as NodeJS.Timeout);
+          onEnd();
+          console.log('TERMINE');
+          return time;
+        }
+        const timeLeft = (time as number) - 1000;
+        return timeLeft;
+      });
+    };
+
     if (isPaused) {
       if (interval.current) {
         clearInterval(interval.current as NodeJS.Timeout);
@@ -62,30 +63,19 @@ export const Countdown = ({
     interval.current = setInterval(countDown, 1000);
 
     return () => clearInterval(interval.current as NodeJS.Timeout);
-  }, [countDown, isPaused]);
+  }, [isPaused, onEnd]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
+    <Box
+      width={width}
+      height={(height * 20) / 100}
+      alignSelf={'center'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      marginVertical={'$16'}>
+      <Text variant={'timer'}>
         {formatTime(minute)}:{formatTime(seconds)}
       </Text>
-    </View>
+    </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    //backgroundColor: theme.dark.background,
-    width: width,
-    height: (height * 20) / 100,
-    alignSelf: 'center',
-    marginVertical: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: RFValue(100),
-    fontWeight: 'bold',
-    color: 'white',
-  },
-});

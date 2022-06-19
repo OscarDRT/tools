@@ -15,7 +15,7 @@ export const HomeScreen = ({}: RootStackScreenProps<'HomeScreen'>) => {
   return (
     <Container justifyContent={'center'}>
       <Text
-        variant={'title'}
+        variant={'subTitle'}
         fontWeight={'700'}
         textAlign={'center'}
         marginBottom={'$16'}>

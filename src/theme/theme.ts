@@ -29,6 +29,7 @@ export const lightTheme = createTheme({
     background: palette.secondary,
     foreground: palette.sDark,
     text: palette.sText,
+    primary: palette.pLight,
   },
   spacing: {
     $8: 8,
@@ -40,12 +41,36 @@ export const lightTheme = createTheme({
     phone: 0,
     tablet: 768,
   },
+  cardVariants: {
+    primary: {
+      backgroundColor: 'primary',
+    },
+    disabled: {
+      backgroundColor: 'primary',
+      opacity: 0.5,
+    },
+  },
   textVariants: {
     title: {
+      color: 'text',
+      fontSize: RFValue(24),
+      lineHeight: RFValue(28),
+      letterSpacing: RFValue(-0.1),
+      fontWeight: '700',
+    },
+    subTitle: {
       color: 'text',
       fontSize: RFValue(18),
       lineHeight: RFValue(22),
       letterSpacing: RFValue(-0.1),
+      fontWeight: '400',
+    },
+    timer: {
+      color: 'text',
+      fontSize: RFValue(100),
+      lineHeight: RFValue(104),
+      letterSpacing: RFValue(-0.1),
+      fontWeight: 'bold',
     },
   },
 });
@@ -57,6 +82,7 @@ export const darkTheme: Theme = {
     background: palette.primary,
     foreground: palette.pDark,
     text: palette.pText,
+    primary: palette.sLight,
   },
 };
 
