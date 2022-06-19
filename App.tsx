@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StatusBar, Switch} from 'react-native';
+import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {SwitchTheme} from './src/components/SwitchTheme';
 import Navigation from './src/navigation';
